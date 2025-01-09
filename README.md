@@ -11,8 +11,9 @@ Help integrating Namecoin key/value pair in a Dart Wallet Client.
 
 ## Features
 
-- [x] parse namecoin data from a transaction
-- [x] getter for expired/renewable state/(block|time) left
+- [x] class to parse and retain namecoin data from a transaction
+- [x] getters for formatted data
+- [x] getters for expired/renewable state/(block|time) left
 - [ ] lookup key/value from blockchain
 - [ ] Construct each name of operation for new transactions
 

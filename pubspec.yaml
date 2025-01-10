@@ -8,6 +8,15 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
+    # needed for
+    # sha256hash
+    # OP_CODES
+    coinlib:
+      git:
+        url: https://github.com/julian-CStack/coinlib.git
+        ref: 0acacfd17eacf72135c693a7b862bd9b7cc56739
+        path: coinlib
+
 
 dev_dependencies:
   lints: ^5.0.0

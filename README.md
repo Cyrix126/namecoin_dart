@@ -14,7 +14,7 @@ Help integrating Namecoin key/value pair in a Dart Wallet Client.
 - [x] class to parse and retain namecoin data from a transaction
 - [x] getters for formatted data
 - [x] getters for expired/renewable state/(block|time) left
-- [ ] generate a scriptHash for requests to retrieve transactions with a name.
+- [x] generate a scriptHash for requests to retrieve transactions with a name.
 - [ ] filter transactions to get the most up to date key/value pair 
 - [ ] construct transactions for each name of operation
 
@@ -27,22 +27,30 @@ dart pub add namecoin_tools
 
 ```dart
 void main() {
+
+  // prepare script hash to use with request as parameter
+  final scriptHash = nameIdentifierToScriptHash('d/test');
+  // get all the txs including the name.
+  final txs = await client.request('blockchain.scripthash.get_history', [scriptHash]);
+
+  // TODO: filter txs to get latest operation on the name
+  tx = latest_name(txs);
   // assume transaction.txData returns a raw Namecoin transaction including a name_update operation, and .height returns the block height of the transaction.
-  final String txData = transaction.txData;
-  final int height = transaction.height;
-  // instance of NameCoinOpName constructed from the transaction.
-  final nameCoinOpName = NameCoinOpName.fromTx(txData, height);
+  final String txData = tx.Data;
+  final int height = tx.height;
+  // instance of OpNameData constructed from the transaction.
+  final nameData = opNameData.fromTx(txData, height);
   // We can get any related values.
-  expect(nameCoinOpName.op, OpName.nameUpdate);
-  expect(nameCoinOpName.fullname, 'd/testsw');
-  expect(nameCoinOpName.namespace, 'd');
-  expect(nameCoinOpName.name, 'testsw');
-  expect(nameCoinOpName.constructedName, 'testsw.bit');
-  expect(nameCoinOpName.value,'{"ip":["127.0.0.1"]}');
+  expect(nameData.op, OpName.nameUpdate);
+  expect(nameData.fullname, 'd/testsw');
+  expect(nameData.constructedName, 'testsw.bit');
+  expect(nameData.value,'{"ip":["127.0.0.1"]}');
+  // Check if name is expired at block height
+  expect(nameData.expired(current_height), false);
   // hash is only present in name_new operations
-  expect(() => nameCoinOpName.hash, throwsException);
+  expect(() => nameData.hash, throwsException);
   // rand is only present in name_firstupdate operations
-  expect(() => nameCoinOpName.rand, throwsException);
+  expect(() => nameData.rand, throwsException);
 }
 ```
 ## Bug Reporting

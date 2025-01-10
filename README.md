@@ -29,7 +29,7 @@ dart pub add namecoin_tools
 void main() {
 
   // prepare script hash to use with request as parameter
-  final scriptHash = nameIdentifierToScriptHash('d/test');
+  final scriptHash = nameIdentifierToScriptHash('d/testsw');
   // get all the txs including the name.
   final txs = await client.request('blockchain.scripthash.get_history', [scriptHash]);
 

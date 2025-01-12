@@ -1,5 +1,5 @@
 
-Dart library to interact with namecoin key/value, parsing and constructing fields for namecoin transactions.
+Low level Dart library to interact with namecoin key/value, parsing and constructing fields for namecoin transactions.
 
 ## Status of developmement
 
@@ -14,9 +14,12 @@ Help integrating Namecoin key/value pair in a Dart Wallet Client.
 - [x] class to parse and retain namecoin data from a transaction
 - [x] getters for formatted data
 - [x] getters for expired/renewable state/(block|time) left
-- [x] generate a scriptHash for requests to retrieve transactions with a name.
-- [ ] filter transactions to get the most up to date key/value pair 
+- [x] generate a scriptHash for requests to retrieve txid with a name.
+- [ ] decode from scriptPubKey
 - [ ] construct transactions for each name of operation
+  - [ ] name_new
+  - [ ] name_firstupdate
+  - [ ] name_update
 
 ## Usage
 
@@ -29,15 +32,16 @@ dart pub add namecoin_tools
 void main() {
 
   // prepare script hash to use with request as parameter
-  final scriptHash = nameIdentifierToScriptHash('d/testsw');
-  // get all the txs including the name.
-  final txs = await client.request('blockchain.scripthash.get_history', [scriptHash]);
-
-  // TODO: filter txs to get latest operation on the name
-  tx = latest_name(txs);
-  // assume transaction.txData returns a raw Namecoin transaction including a name_update operation, and .height returns the block height of the transaction.
-  final String txData = tx.Data;
-  final int height = tx.height;
+  final String scriptHash = nameIdentifierToScriptHash('d/testsw');
+  // get all the txids including the name using 'blockchain.scripthash.get_history' method with the scriptHash as parameter
+  final Iterable<Map<String, dynamic>> txIds = await client.scriptHashGetHistory([scriptHash]);
+  // keep only the most up to date (highest height), it will be the latest.
+  final Map<String, dynamic> txId = txIds.last;
+  // get the hash of the txid
+  final String txHash = txId["tx_hash"];
+  final int height = txId.["height"];
+  // fetch the tx details using 'blockchain.transaction.get' method and txHash as parameter.
+  final Map<String, dynamic> txData = await client.getTransaction(txHash);
   // instance of OpNameData constructed from the transaction.
   final nameData = opNameData.fromTx(txData, height);
   // We can get any related values.
@@ -46,6 +50,8 @@ void main() {
   expect(nameData.constructedName, 'testsw.bit');
   expect(nameData.value,'{"ip":["127.0.0.1"]}');
   // Check if name is expired at block height
+  // You must retrieve current height of blockchain using your client.
+  final current_height = client.blockchain_height;
   expect(nameData.expired(current_height), false);
   // hash is only present in name_new operations
   expect(() => nameData.hash, throwsException);

@@ -1,4 +1,4 @@
-import 'package:namecoin/src/scripts.dart';
+import 'package:namecoin/src/scripts/show.dart';
 import 'package:test/test.dart';
 
 void main() {

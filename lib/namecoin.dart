@@ -9,5 +9,14 @@ export 'src/op_name_data.dart';
 /// Constants specific to Namecoin blockchain
 export 'src/constants.dart';
 
-/// Generating tx script*
-export 'src/scripts.dart';
+/// Generate scriptPubKey for name_show request
+export 'src/scripts/show.dart';
+
+/// Generate scriptPubKey for NAME_NEW tx
+export 'src/scripts/name_op/new.dart';
+
+/// Generate scriptPubKey for NAME_FIRSTUPDATE tx
+export 'src/scripts/name_op/firstupdate.dart';
+
+/// Generate scriptPubKey for NAME_UPDATE tx
+export 'src/scripts/name_op/update.dart';

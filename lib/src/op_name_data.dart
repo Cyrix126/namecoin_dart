@@ -43,7 +43,7 @@ class OpNameData {
   /// Return the type of the name operation
   OpName get op => OpName.fromString(_dataOp["op"]!);
 
-  /// Return the space of the key pair, excluding the namespace
+  /// Return the name of the key pair, excluding the namespace
   String get name {
     return fullname.replaceAll(RegExp('.*/'), '');
   }

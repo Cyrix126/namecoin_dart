@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:core';
 
 import 'package:namecoin/namecoin.dart';
@@ -27,9 +26,8 @@ class OpNameData {
   /// Takes a transaction data and a String containing a height field to create an instance of OpNameData
   ///
   /// It will automatically retrieve the opData from the tx data and the height from the tx hash.
-  static OpNameData fromTx(String txData, String txHash) {
-    final height = jsonDecode(txHash)["height"]! as int;
-    final outputs = jsonDecode(txData)["vout"] as List<dynamic>;
+  static OpNameData fromTx(Map<String, dynamic> txData, int height) {
+    final outputs = txData["vout"] as List<dynamic>;
     for (final output in outputs) {
       final Map<String, dynamic>? dataOp = output["scriptPubKey"]["nameOp"];
       if (dataOp != null) {

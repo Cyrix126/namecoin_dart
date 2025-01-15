@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:namecoin/namecoin.dart';
 import 'package:test/test.dart';
 
@@ -12,7 +14,8 @@ const int heightExpiredNameNew = heightNameNew + blocksNameExpiration;
 /// Tests to check that the calculations of renewable/expired state/block left/time left are valid.
 /// Only one type of name operation is tested because the rules are the same for all.
 void main() {
-  final opNameData = OpNameData.fromTx(rawTxNameNew, txHashNameNew);
+  final opNameData = OpNameData.fromTx(
+      jsonDecode(rawTxNameNew), jsonDecode(txHashNameNew)["height"]);
   group("Calculations of renewable", () {
     test("Calculations of renewable state", () {
       expect(opNameData.renewable(heightNameNew), false);

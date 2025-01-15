@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:namecoin/namecoin.dart';
 import 'package:test/test.dart';
 
@@ -23,7 +25,8 @@ void main() {
   /// Tests to check that a class OpNameData constructed from transactions return the correct results.
   group('Parsing a raw transaction', () {
     test("newName", () {
-      final opNameData = OpNameData.fromTx(rawTxNameNew, txHashNameNew);
+      final opNameData = OpNameData.fromTx(
+          jsonDecode(rawTxNameNew), jsonDecode(txHashNameNew)["height"]);
       expect(opNameData.op, OpName.nameNew);
       expect(opNameData.hash, 'ad52101edc97f205ced33f67cf319f97eb635470');
 
@@ -35,8 +38,8 @@ void main() {
       expect(() => opNameData.constructedName, throwsException);
     });
     test("newFirstUpdate", () {
-      final opNameData =
-          OpNameData.fromTx(rawTxNameFirstUpdate, txHashFirstUpdate);
+      final opNameData = OpNameData.fromTx(jsonDecode(rawTxNameFirstUpdate),
+          jsonDecode(txHashFirstUpdate)["height"]);
       expect(opNameData.op, OpName.nameFirstUpdate);
       expect(opNameData.rand, 'fde80a79d760799ee20a3bba342ce784c4354a07');
       expect(opNameData.fullname, 'd/testsw');
@@ -50,7 +53,8 @@ void main() {
       expect(() => opNameData.hash, throwsException);
     });
     test("nameUpdate", () {
-      final opNameData = OpNameData.fromTx(rawTxNameUpdate, txHashNameUpdate);
+      final opNameData = OpNameData.fromTx(
+          jsonDecode(rawTxNameUpdate), jsonDecode(txHashNameUpdate)["height"]);
       expect(opNameData.op, OpName.nameUpdate);
       expect(opNameData.fullname, 'd/testsw');
       expect(opNameData.namespace, 'd');

@@ -20,3 +20,6 @@ export 'src/scripts/name_op/firstupdate.dart';
 
 /// Generate scriptPubKey for NAME_UPDATE tx
 export 'src/scripts/name_op/update.dart';
+
+/// Parse a pubscriptPubKey hex for OP_NAME
+export 'src/scripts/parsing.dart';

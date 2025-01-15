@@ -29,7 +29,7 @@ Map<String, String> parsePubScriptKeyHex(String hex) {
         "value": ascii.decode(decoded[3].$2.toList())
       };
     default:
-      throw Exception('This scriptPubKey does not conains an OP_NAME');
+      throw Exception('This scriptPubKey does not contains an OP_NAME');
   }
 }
 

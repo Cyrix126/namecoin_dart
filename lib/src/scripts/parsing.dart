@@ -53,9 +53,7 @@ List<(int, Uint8List, int)> _scriptGetOp(Uint8List bytes) {
         i++;
       } else if (opCode == scriptOpNameToCode["PUSHDATA2"]!) {
         try {
-          //
           nSize = bytes.buffer.asByteData(i, 2).buffer.asUint16List()[0];
-          // nSize = (bytes[i] + (bytes[i + 1] << 8));
         } catch (e) {
           Exception('Malformed bitcoin script');
         }
@@ -63,7 +61,6 @@ List<(int, Uint8List, int)> _scriptGetOp(Uint8List bytes) {
       } else if (opCode == scriptOpNameToCode["PUSHDATA4"]!) {
         try {
           nSize = bytes.buffer.asByteData(i, 4).buffer.asUint32List()[0];
-          // nSize = bytes.buffer.asByteData(i, 4).getUint32(0);
         } catch (e) {
           Exception('Malformed bitcoin script');
         }

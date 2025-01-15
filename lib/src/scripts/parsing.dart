@@ -5,7 +5,7 @@ import 'package:coinlib/coinlib.dart';
 import 'package:namecoin/namecoin.dart';
 
 /// Takes an hex field of a pubScriptKey and decode it to a Map`<`String, String> representing an op_name.
-//
+///
 /// The result is directly useable to construct an [OpNameData] instance.
 /// The "hash" correspond to the commitment and "rand" to the salt. This value are named this way here
 /// to remain compatible with the data returned from a namecoin node.

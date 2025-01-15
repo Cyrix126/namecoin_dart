@@ -15,11 +15,12 @@ Help integrating Namecoin key/value pair in a Dart Wallet Client.
 - [x] getters for formatted data
 - [x] getters for expired/renewable state/(block|time) left
 - [x] generate a scriptHash for requests to retrieve txid with a name.
+- [x] decode from scriptPubKey
 - [x] construct transactions for each name of operation
   - [x] name_new
   - [x] name_firstupdate
   - [x] name_update
-- [ ] decode from scriptPubKey
+- [ ] full example
 
 ## Usage
 

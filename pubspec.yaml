@@ -25,3 +25,11 @@ dependencies:
 dev_dependencies:
   lints: ^5.0.0
   test: ^1.24.0
+  # needed for
+  # examples
+  electrum_adapter:
+    git:
+      url: https://github.com/cypherstack/electrum_adapter
+      ref: 0de864a35c71fce3a07e6a53b623619b32394b8d
+  args: ^2.6.0
+  crypto: 3.0.2

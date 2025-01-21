@@ -3,7 +3,7 @@ Low level Dart library to interact with namecoin key/value, parsing and construc
 
 ## Status of developmement
 
-**Beta Release**
+**Beta Release**  
 Not tested in production.
 
 ## Objective

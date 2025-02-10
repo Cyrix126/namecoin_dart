@@ -29,9 +29,9 @@ class OpNameData {
   static OpNameData fromTx(Map<String, dynamic> txData, int height) {
     final outputs = txData["vout"] as List<dynamic>;
     for (final output in outputs) {
-      final Map<String, dynamic>? dataOp = output["scriptPubKey"]["nameOp"];
-      if (dataOp != null) {
-        return OpNameData(dataOp, height);
+      final dataOp = output["scriptPubKey"]?["nameOp"];
+      if (dataOp is Map) {
+        return OpNameData(dataOp.cast(), height);
       }
     }
     throw Exception(

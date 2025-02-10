@@ -63,7 +63,7 @@ class OpNameData {
 
   /// Return the name space of the key pair, excluding the name
   ///
-  /// Will return null if no name operation is present in the transaction.
+  /// Throws if no name operation is present in the transaction.
   String get fullname {
     switch (op) {
       case OpName.nameFirstUpdate || OpName.nameUpdate:

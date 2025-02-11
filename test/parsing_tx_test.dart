@@ -21,6 +21,9 @@ const String txHashNameUpdate =
 const String rawTxNameUpdate =
     '{"txid":"a05095512d4a210b14a2dd140277b8af1f5f4bd110858e7ca1c6b8c0f1eace89","hash":"106c2cad027a58ea4f024c3d52efb3282a9fcc60538d0660b5b40cde9c272a0c","version":28928,"size":470,"vsize":308,"weight":1232,"locktime":753572,"vin":[{"txid":"4e1ac13f0991dd79d8e9140373a144256b00b3b8b59e4e04f47b1458283f115d","vout":0,"scriptSig":{"asm":"","hex":""},"txinwitness":["304402204514d4131710b9d75b11aece72d1d28ec2341ed58d0e60970455b1a991de89ab0220251082ff0b2a909dd10884bff037b2b0cade762b1cfac2ce6931223d0747f39601","03f96ba551cb99a385295816a3a7b188966f5a7418e0f2569817444e6059992a81"],"sequence":4294967293},{"txid":"4e1ac13f0991dd79d8e9140373a144256b00b3b8b59e4e04f47b1458283f115d","vout":1,"scriptSig":{"asm":"","hex":""},"txinwitness":["3044022062fe55c2eb94c3397fb5e8fef5f21e33c5369e5dd4b3c48bf14089411f944bd9022066bcc80c80d7b0290d38b7375b7625a44e4e3a2e38ba2d2bd69596e223dea64201","026ccea72802318c33de84f80942a97222e3c4aed429508942f0f12e66425057a2"],"sequence":4294967293}],"vout":[{"value":0.004422,"n":0,"scriptPubKey":{"asm":"0 a4f09824781817b9c0ee8795192b200189aef636","hex":"0014a4f09824781817b9c0ee8795192b200189aef636","address":"nc1q5ncfsfrcrqtmns8ws723j2eqqxy6aa3k0wllqm","type":"witness_v0_keyhash"}},{"value":0.01,"n":1,"scriptPubKey":{"nameOp":{"op":"name_update","name":"d/testsw","name_encoding":"ascii","value":"{\\"ip\\":[\\"188.114.97.2\\",\\"188.114.96.2\\"],\\"ip6\\":[\\"2a06:98c1:3121::2\\",\\"2a06:98c1:3120::2\\"]}","value_encoding":"ascii"},"asm":"OP_NAME_UPDATE 642f746573747377 7b226970223a5b223138382e3131342e39372e32222c223138382e3131342e39362e32225d2c22697036223a5b22326130363a393863313a333132313a3a32222c22326130363a393863313a333132303a3a32225d7d OP_2DROP OP_DROP 0 1ace3054b2449e7ca09cd1f61fab7950e1e4f85a","hex":"5308642f7465737473774c567b226970223a5b223138382e3131342e39372e32222c223138382e3131342e39362e32225d2c22697036223a5b22326130363a393863313a333132313a3a32222c22326130363a393863313a333132303a3a32225d7d6d7500141ace3054b2449e7ca09cd1f61fab7950e1e4f85a","address":"nc1qrt8rq49jgj08egyu68mpl2me2rs7f7z62f54u5","type":"witness_v0_keyhash"}}]}';
 
+const String rawTxNameUpdateWithoutNameSpace =
+    '{"txid": "db486b90bf95245f953bd5ea072ae83a7fca5243cc6aee94c678e4f325042938","hash": "db486b90bf95245f953bd5ea072ae83a7fca5243cc6aee94c678e4f325042938","version": 28928,"size": 380,"vsize": 380,"weight": 1520,"locktime": 708261,"vin": [{"txid": "c3f803e1efefd49d9c846693387346a7ff598d3764f0a436760b4a8b78632f7a","vout": 0,"scriptSig": {"asm": "3044022040fffc01696daec0bce8966b8c3b30f8f037aac8891a04038b7816882b1033f50220075a0b0e597e89e7a1caffb94a28effbaf6d6dbfd128e2cd40babb427880e801[ALL] 02dca847a01d2daa9dc697e673d0633221b4996eb2c1f8db8d947e38b52b2a7eaa","hex": "473044022040fffc01696daec0bce8966b8c3b30f8f037aac8891a04038b7816882b1033f50220075a0b0e597e89e7a1caffb94a28effbaf6d6dbfd128e2cd40babb427880e801012102dca847a01d2daa9dc697e673d0633221b4996eb2c1f8db8d947e38b52b2a7eaa"},"sequence": 4294967293},{"txid": "d543550cab0b13ecf22b66f1a9fd3962e8e8c5d9854780869bdedf02772c462e","vout": 1,"scriptSig": {"asm": "30440220256aff90602b35aec20eb7a9dfb41822a3392b38650ea02a10584e4f90309e7202202d14c6dafb1b97e039dba46cedbcee7d3e1f41b21537eebfa12bba335f8fb68a[ALL] 0359ae8c3e5ea0e5aa614891dcbbaa8f13591dd20a8b168613b938c78e234ea59f","hex": "4730440220256aff90602b35aec20eb7a9dfb41822a3392b38650ea02a10584e4f90309e7202202d14c6dafb1b97e039dba46cedbcee7d3e1f41b21537eebfa12bba335f8fb68a01210359ae8c3e5ea0e5aa614891dcbbaa8f13591dd20a8b168613b938c78e234ea59f"},"sequence": 4294967293 }],"vout": [{"value": 0.01,"n": 0,"scriptPubKey": {"nameOp": {"op": "name_update","name": "lol","name_encoding": "ascii","value": "","value_encoding": "ascii"},"asm": "OP_NAME_UPDATE 6c6f6c 0 OP_2DROP OP_DROP OP_DUP OP_HASH160 a252569609889220edb6b2b2c517bf1c47b3fb74 OP_EQUALVERIFY OP_CHECKSIG","hex": "53036c6f6c006d7576a914a252569609889220edb6b2b2c517bf1c47b3fb7488ac","address": "NBNeJgdsMcpUU6YTisPKMeRefTpbu3DRgE","type": "pubkeyhash"}},{"value": 22.357695,"n": 1,"scriptPubKey": {"asm": "OP_DUP OP_HASH160 d8a502bc9b8b480aa40c1f2bc997690c1a6d0a59 OP_EQUALVERIFY OP_CHECKSIG","hex": "76a914d8a502bc9b8b480aa40c1f2bc997690c1a6d0a5988ac","address": "NGKsqE6Cqb97q54cgAro2cEYJahJpKTF2c","type": "pubkeyhash"}}],"blockhash": "baa669827b158fe5161bea0ca26109e1a2401d42dade4432c70deec7804a1442","confirmations": 49776,"time": 1709267559,"blocktime": 1709267559}';
+
 void main() {
   /// Tests to check that a class OpNameData constructed from transactions return the correct results.
   group('Parsing a raw transaction', () {
@@ -62,6 +65,20 @@ void main() {
       expect(opNameData.value,
           '{"ip":["188.114.97.2","188.114.96.2"],"ip6":["2a06:98c1:3121::2","2a06:98c1:3120::2"]}');
       expect(opNameData.constructedName, 'testsw.bit');
+      expect(opNameData.renewable(753575), false);
+      expect(opNameData.renewable(753593), true);
+      expect(() => opNameData.hash, throwsException);
+      expect(() => opNameData.rand, throwsException);
+    });
+    test("nameUpdateWithoutNameSpace", () {
+      final opNameData = OpNameData.fromTx(
+          jsonDecode(rawTxNameUpdateWithoutNameSpace), 753573);
+      expect(opNameData.op, OpName.nameUpdate);
+      expect(opNameData.fullname, 'lol');
+      expect(opNameData.namespace, '');
+      expect(opNameData.name, 'lol');
+      expect(opNameData.value, '');
+      expect(opNameData.constructedName, 'lol');
       expect(opNameData.renewable(753575), false);
       expect(opNameData.renewable(753593), true);
       expect(() => opNameData.hash, throwsException);

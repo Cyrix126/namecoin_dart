@@ -58,7 +58,12 @@ class OpNameData {
 
   /// Return the namespace of the key pair, excluding the name
   String get namespace {
-    return fullname.replaceAll(RegExp(r'/[^/]*$'), '');
+    final match = RegExp('.*(?=/)').firstMatch(fullname);
+    if (match != null) {
+      return match[0]!;
+    } else {
+      return '';
+    }
   }
 
   /// Return the name space of the key pair, excluding the name

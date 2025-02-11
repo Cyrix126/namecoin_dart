@@ -29,9 +29,9 @@ class OpNameData {
   static OpNameData fromTx(Map<String, dynamic> txData, int height) {
     final outputs = txData["vout"] as List<dynamic>;
     for (final output in outputs) {
-      final Map<String, dynamic>? dataOp = output["scriptPubKey"]["nameOp"];
-      if (dataOp != null) {
-        return OpNameData(dataOp, height);
+      final dataOp = output["scriptPubKey"]?["nameOp"];
+      if (dataOp is Map) {
+        return OpNameData(dataOp.cast(), height);
       }
     }
     throw Exception(
@@ -68,7 +68,7 @@ class OpNameData {
 
   /// Return the name space of the key pair, excluding the name
   ///
-  /// Will return null if no name operation is present in the transaction.
+  /// Throws if no name operation is present in the transaction.
   String get fullname {
     switch (op) {
       case OpName.nameFirstUpdate || OpName.nameUpdate:

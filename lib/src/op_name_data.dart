@@ -174,6 +174,19 @@ class OpNameData {
   bool expired(int currentHeight, [bool semi = false]) {
     return expiredBlockLeft(currentHeight, semi) == null;
   }
+
+  String toString() {
+    return "OpNameData("
+        "op: $op, "
+        "fullname: ${op == OpName.nameNew ? "(name hidden for nameNew)" : fullname}, "
+        "namespace: ${op == OpName.nameNew ? "n/a" : namespace}, "
+        "constructedName: ${op == OpName.nameNew ? "n/a" : constructedName}, "
+        "height: $height"
+        "${op == OpName.nameFirstUpdate || op == OpName.nameUpdate ? ", value: $value" : ""}"
+        "${op == OpName.nameFirstUpdate ? ", rand: $rand" : ""}"
+        "${op == OpName.nameNew ? ", hash: $hash" : ""}"
+        ")";
+  }
 }
 
 /// Three possible variants for a name operation

@@ -20,6 +20,9 @@ dependencies:
     # HMAC-RIPEMD160
     # pointycastle is a dep of coinlib, it doesn't add a new dep
     pointycastle: ^3.7.3
+    # needed for
+    # deterministic salt from pivate key
+    cryptography: ^2.7.0
 
 
 dev_dependencies:
@@ -32,7 +35,7 @@ dev_dependencies:
       url: https://github.com/cypherstack/electrum_adapter
       ref: 0de864a35c71fce3a07e6a53b623619b32394b8d
   args: ^2.6.0
-  crypto: 3.0.2
+  crypto: ^3.0.0
   bip39:
     git:
       url: https://github.com/cypherstack/stack-bip39.git

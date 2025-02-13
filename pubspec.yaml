@@ -1,6 +1,6 @@
 name: namecoin
 description: Dart library to interact with namecoin key/value
-version: 0.3.0
+version: 1.0.0
 # repository: https://github.com/my_org/my_repo
 
 environment:
